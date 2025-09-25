@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QMainWindow, QMenuBar, QSizePolicy,
-    QStatusBar, QWidget)
+    QSplitter, QStatusBar, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -25,6 +25,31 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.splitter_2 = QSplitter(self.centralwidget)
+        self.splitter_2.setObjectName(u"splitter_2")
+        self.splitter_2.setOrientation(Qt.Orientation.Horizontal)
+        self.Sidebar = QWidget(self.splitter_2)
+        self.Sidebar.setObjectName(u"Sidebar")
+        self.Sidebar.setMinimumSize(QSize(200, 0))
+        self.splitter_2.addWidget(self.Sidebar)
+        self.splitter = QSplitter(self.splitter_2)
+        self.splitter.setObjectName(u"splitter")
+        self.splitter.setOrientation(Qt.Orientation.Vertical)
+        self.displayArea = QWidget(self.splitter)
+        self.displayArea.setObjectName(u"displayArea")
+        self.displayArea.setMinimumSize(QSize(200, 0))
+        self.splitter.addWidget(self.displayArea)
+        self.panelArea = QWidget(self.splitter)
+        self.panelArea.setObjectName(u"panelArea")
+        self.panelArea.setMinimumSize(QSize(200, 0))
+        self.splitter.addWidget(self.panelArea)
+        self.splitter_2.addWidget(self.splitter)
+
+        self.verticalLayout.addWidget(self.splitter_2)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")

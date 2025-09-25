@@ -3,6 +3,10 @@ QMainWindow {
     background-color: #4CAF50;
 }
 
+QWidget#Sidebar{
+    background-color: #FFFFFF;
+}
+
 QPushButton {
     background-color: #4CAF50;
     color: white;
